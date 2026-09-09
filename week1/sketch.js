@@ -2,14 +2,14 @@
 // this is the only part of the file you need to edit!
 
 const quotes = [
-  { text: "the intersection of programming, design, and art", source: "Scott" },
-  { text: "a chance for code to be wrong", source: "Sara" },
-  { text: "surprise, exploration, and aesthetic exploration", source: "Sally" },
-  { text: "process over results", source: "Sam" },
-  { text: "form over function", source: "Sean" },
-  { text: "iterative and experimental", source: "Scooby" },
-  { text: "a community of practice", source: "Seth" },
-  { text: "an opportunity to stick it to the man", source: "Shifty-eyed Susan" }
+  { text: "'the practice of making art with code.'", source: "Andrew Bryant" }, // https://www.artsyshark.com/2021/05/26/what-is-creative-coding/
+  { text: "\n'a process, based on exploration, iteration, reflection and discovery,\nwhere code is used as the primary medium to create a wide range of media artifacts.'", source: "Tim" }, // https://trcc.timrodenbroeker.de/faq/what-is-creative-coding/
+  { text: "\n'[coding that] doesn't follow pre-defined specifications to solve problems for a user,\nbut rather aims at expressing ideas and concepts.'", source: "Raphaël de Courville" }, // https://hackmd.io/@creativecodeberlin/ryljdLxy_
+  { text: "\n'rather than a one-sided audience viewing a result,\nit can draw the audience in to interact with.'", source: "Amber" }, // https://medium.com/@agc410/intro-to-creative-coding-56aa7658fd23
+  { text: "simply the art of creating visualizations or expression.'", source: "Donovan Alexander" }, // https://interestingengineering.com/culture/everything-you-need-to-know-about-the-artistic-world-of-creative-coding
+  { text: "\n'an exciting blend of art and technology where you use programming\nto create stunning visuals, animations, sounds, and interactive experiences.'", source: "Cam Velasco" }, // https://floowitalent.com/tips/what-is-creative-coding
+  { text: "\n'the practice of using computer programming\nas a medium for artistic and personal expression.'", source: "Laura Valtere" }, // https://diatomenterprises.com/blog/what-is-creative-coding/
+  { text: "'a practice where programming is used as a tool for art or design'", source: "Jack B. Du" } // https://digitalfutures.international/creative-coding/
 ];
 // no need to edit anything below this line! 
 // if you have made an error, you can check your history to see what might have gone wrong
@@ -22,7 +22,7 @@ function setup() {
   // Seed with millis() so each page load gives a different quote.
   randomSeed(millis());
   textSize(32);
-  fill(10, 255, 10);
+  fill(247, 249, 250);
   // calls the function to pick a quote
   pickQuote();
 }
@@ -33,18 +33,19 @@ function pickQuote() {
 }
 
 function draw() {
-  background(255, 20, 250); // set the background color
+  background(18, 35, 59); // set the background color
   drawQuote();  // draw the quote on screen
 }
 
 function drawQuote() {   // draw text
   textAlign(CENTER, CENTER);
-  text("Creative Coding is.....", width / 2, height / 2 - 48);
+  text("Creative Coding is...", width / 2, height / 2 - 48);
+  textStyle(ITALIC);
+  text(current.text, width/2, height/2)
+  //text("'" + current.text + "'", width / 2, height / 2);
   textStyle(BOLD);
-  text("'" + current.text + "'", width / 2, height / 2);
   textAlign(RIGHT, CENTER);
-  text("-" + current.source, width - 100, height - 100);
-
+  text("- " + current.source, width - 100, height - 100);
 }
 
 function windowResized() {
