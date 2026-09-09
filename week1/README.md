@@ -1,4 +1,11 @@
 # Week 1 notes
+/*
+Code is the medium for the creation of art
+- coding is the paintbrush
+Free as in speech, not as in beer
+- open source software are free to use
+HTML: skeleton, CSS: clothes, JS: central nervous system
+*/
 
 ---
 
