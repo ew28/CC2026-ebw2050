@@ -1,11 +1,9 @@
 # Week 1 notes
-/*
-Code is the medium for the creation of art
-- coding is the paintbrush
-Free as in speech, not as in beer
-- open source software are free to use
-HTML: skeleton, CSS: clothes, JS: central nervous system
-*/
+
+Having gone from studying data science to studying interactive media, I have already experienced a major shift in the way I view code. At first, it felt like a chore: structured and strict, with no space for creativity. However, once I switched my major, I realized code could be so much more than that. It became another tool for creative expression. I found I could use it to build what analog tools alone cannot. At the same time, I still have reservations about programming, and I have not always pursued the learning process as much as I should have.
+The way I see it, code can work both for and against me. While it gives me control over my ideas and lets me turn concepts into tangible visual or interactive experiences, its structure and precision can also be a barrier between my ideas and what I can actually create. However, learning to work with those limitations rather than fighting against them will help me grow as a creator and an artist.
+I am excited to continue learning how to use code as a means for creation. I want to push past my reservations about programming, build my skills and understanding of the technology, and create more complex projects while better translating my vision to the screen. 
+At the end of the day, code is another language. And as with any language, the only way to improve and learn is through practice. I am looking forward to doing so in this class.
 
 ---
 
