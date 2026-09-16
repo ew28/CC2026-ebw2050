@@ -37,7 +37,7 @@ let bubbleColor = [];
 let xSpeed = [];
 let ySpeed = [];
 
-// variables for rain drops
+// variables for snow drops
 let numDrops = 100;
 let dropX = [];
 let dropY = [];
@@ -90,12 +90,12 @@ function setup() {
         ySpeed[i] = random(-5, 5);
     }
 
-    //initializing rain drops
+    //initializing snow drops
     for (i = 0; i < numDrops; i++){
         dropX[i] = random(0, windowWidth);
         dropY[i] = random(0, windowHeight);
         dropSize[i] = random(20, 100);
-        dropColor[i] = color(0, 0, random(255), random(50, 200));
+        dropColor[i] = color(255);
         dropXSpeed[i] = random(1, 5);
         dropYSpeed[i] = random(1, 5);
     }
@@ -119,7 +119,7 @@ function draw() {
         bubbles();
     }
     else if (choose === 3){
-        rainDrops();
+        snowDrops();
     }
     else if (choose === 4){
         bounce();
@@ -354,7 +354,7 @@ function bubbles(){
     }
 }
 
-function rainDrops(){
+function snowDrops(){
     background(104);
     noStroke();
     for(i = 0; i < numDrops; i++){
