@@ -61,8 +61,15 @@ function setup() {
     angleMode(DEGREES);
 
     background(18, 35, 59);
+    
     cenW = windowWidth / 2;
     cenH = windowHeight / 2;
+
+    textSize(32);
+    fill(247, 249, 250);
+    textAlign(CENTER, CENTER);
+    textStyle(ITALIC);
+    text('Welcome! Click to begin.', cenW, cenH);
 
     // initializing stars
     for (i = 0; i < numStars; i++){
@@ -120,8 +127,7 @@ function draw() {
 }
 
 function mousePressed() {
-    choose = int(random(0, 5));
-    console.log('choose');
+    choose = floor(random(0, 5));
 }
 
 function starrySky(){
@@ -166,17 +172,19 @@ function starrySky(){
     // push();
     // translate(200, 200);
     fill(20, 3, 0);
-    rect(200, horizon - 20, stumpW, 20); // stump one
     rect(320, horizon - 20, stumpW, 40); // stump two
-   
-    fill(0, 10, 1);
+    fill(20, 10, 0);
+    rect(200, horizon - 20, stumpW, 20); // stump one
+
+    fill(0, 10, 1); // small tree
+    triangle(triXTwo, horizon - 130, triXTwo - 100, horizon - 20, triXTwo + 100, horizon - 20); // bottom
+    triangle(triXTwo, horizon - 170, triXTwo - 75, horizon - 80, triXTwo + 75, horizon - 80); // middle
+    triangle(triXTwo, horizon - 200, triXTwo - 50, horizon - 140, triXTwo + 50, horizon - 140); // top
+
+    fill(0, 20, 5); // big tree
     triangle(triX, horizon - 150, triX - 150, horizon - 20, triX + 150, horizon - 20); // bottom
     triangle(triX, horizon - 220, triX - 120, horizon - 110, triX + 120, horizon - 110); // middle
     triangle(triX, horizon - 270, triX - 80, horizon - 190, triX + 80, horizon - 190); // top
-
-    triangle(triXTwo, horizon - 130, triXTwo - 100, horizon - 20, triXTwo + 100, horizon - 20);
-    triangle(triXTwo, horizon - 170, triXTwo - 75, horizon - 80, triXTwo + 75, horizon - 80);
-    triangle(triXTwo, horizon - 200, triXTwo - 50, horizon - 140, triXTwo + 50, horizon - 140);
     // pop();
 
     fill(5);
