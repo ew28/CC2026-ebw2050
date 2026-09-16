@@ -38,7 +38,7 @@ let xSpeed = [];
 let ySpeed = [];
 
 // variables for snow drops
-let numDrops = 100;
+let numDrops = 200;
 let dropX = [];
 let dropY = [];
 let dropSize = [];
@@ -54,6 +54,7 @@ let movXRate = 7;
 let movYRate = 7;
 
 let choose;
+let prevChoose;
 //let selectList = [0, 1, 2, 3, 4, 5];
 
 function setup() {
@@ -94,7 +95,7 @@ function setup() {
     for (i = 0; i < numDrops; i++){
         dropX[i] = random(0, windowWidth);
         dropY[i] = random(0, windowHeight);
-        dropSize[i] = random(20, 100);
+        dropSize[i] = random(5, 50);
         dropColor[i] = color(255);
         dropXSpeed[i] = random(1, 5);
         dropYSpeed[i] = random(1, 5);
@@ -127,7 +128,12 @@ function draw() {
 }
 
 function mousePressed() {
+    prevChoose = choose;
     choose = floor(random(0, 5));
+
+    if (choose === prevChoose){
+        choose = floor(random(0, 5));
+    }
 }
 
 function starrySky(){
