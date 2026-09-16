@@ -3,12 +3,17 @@ let cenH;
 
 // variables for starry
 let starList = [];
+let starX = [];
+let starY = [];
+let starSize = [];
+let numStars = 1000;
 let horizon;
 let stumpW = 40;
 let triX;
 let triXTwo;
 let maxStar = 5;
 let minStar = 1;
+let starGrowth = [];
 let rotDeg = 0;
 
 // variables for sunny
@@ -58,6 +63,14 @@ function setup() {
     background(18, 35, 59);
     cenW = windowWidth / 2;
     cenH = windowHeight / 2;
+
+    // initializing stars
+    for (i = 0; i < numStars; i++){
+        starX[i] = random(0, windowWidth);
+        starY[i] = random(0, windowHeight);
+        starSize[i] = random(minStar, maxStar);
+        starGrowth[i] = random(-0.5, 0.5);
+    }
 
     //initializing bubbles
     for (i = 0; i < numBubbles; i++){
@@ -122,8 +135,19 @@ function starrySky(){
     triX = (200 + stumpW / 2);
     triXTwo = triX + 120;
 
-    for (i = 0; i < 100; i++){
-        starList[i] = circle(random(0, windowWidth), random(0, windowHeight), random(minStar, maxStar));
+    // for (i = 0; i < 100; i++){
+    //     starList[i] = circle(random(0, windowWidth), random(0, windowHeight), random(minStar, maxStar));
+    // }
+
+    for (i = 0; i < numStars; i++){
+        // fill(255);
+        circle(starX[i], starY[i], starSize[i]);
+        
+        starSize[i] += starGrowth[i];
+        
+        if (starSize[i] > maxStar || starSize[i] < minStar){
+            starGrowth[i] = -starGrowth[i];
+        }
     }
     // console.log(starList);
     // noStroke();
