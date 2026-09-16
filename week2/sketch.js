@@ -2,7 +2,7 @@ let cenW;
 let cenH;
 
 // variables for starry
-let starList = [];
+// let starList = [];
 let starX = [];
 let starY = [];
 let starSize = [];
