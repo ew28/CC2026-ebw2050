@@ -30,21 +30,21 @@ let cloudNineX = 0;
 
 // variables for bubbles
 let numBubbles = 20
-let bubbleSize = [numBubbles]
-let bubbleX = [numBubbles];
-let bubbleY = [numBubbles];
-let bubbleColor = [numBubbles];
-let xSpeed = [numBubbles];
-let ySpeed = [numBubbles];
+let bubbleSize = []
+let bubbleX = [];
+let bubbleY = [];
+let bubbleColor = [];
+let xSpeed = [];
+let ySpeed = [];
 
 // variables for rain drops
 let numDrops = 100;
-let dropX = [numDrops];
-let dropY = [numDrops];
-let dropSize = [numDrops];
-let dropColor = [numDrops];
-let dropXSpeed = [numDrops];
-let dropYSpeed = [numDrops];
+let dropX = [];
+let dropY = [];
+let dropSize = [];
+let dropColor = [];
+let dropXSpeed = [];
+let dropYSpeed = [];
 
 // variables for bounce
 let size = 100;
@@ -351,7 +351,7 @@ function rainDrops(){
     noStroke();
     for(i = 0; i < numDrops; i++){
         fill(dropColor[i]);
-        circle(dropX[i], dropY[i], dropSize[i], dropSize[i]);
+        circle(dropX[i], dropY[i], dropSize[i]);
 
         dropY[i] = dropY[i] + dropYSpeed[i];
 
