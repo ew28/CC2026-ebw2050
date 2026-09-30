@@ -5,18 +5,10 @@ let numHex = 10;
 let numHexVert = 8;
 
 let angle;
-let vertexX;
-let vertexY;
 let xPos;
 let yPos;
 let radius = 28.8;
 let r2 = radius;
-let circum = radius * 2;
-
-let bBoxX;
-let bBoxY;
-let bBoxW;
-let bBoxH;
 
 let seed = 3733;
 // let seed = 7718;
