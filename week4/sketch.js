@@ -19,6 +19,7 @@ let bBoxW;
 let bBoxH;
 
 let seed = 3733;
+// let seed = 7718;
 
 let doExport = false;
 
@@ -84,15 +85,7 @@ function buildGrid(x, y, r){
 function draw() {
     if(doExport){
         beginRecordSvg("myPlot.svg");
-        // background(0);
     }
-    // else if(!doExport){
-    //     background(255);
-    // }
-    // background(220);
-
-    // textSize(32);
-    // text("seed is: " + seed, 100, 100);
 
     noFill();
     buildGrid(xPos, yPos, radius);
@@ -103,7 +96,3 @@ function draw() {
         doExport = false;
     }
 }
-
-
-
-
