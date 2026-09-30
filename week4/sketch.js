@@ -79,7 +79,6 @@ function buildGrid(x, y, r){
         // r2 *= noise(i * 0.2);
         r2 = r;
     }
-    // r2 = r;
 }
 
 function draw() {
