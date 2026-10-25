@@ -15,7 +15,7 @@ let seed = 3733;
 
 let doExport = false;
 
-function setup() {
+function setup() { 
     createCanvas(576, 400);
     midH = height / 2;
     midW = width / 2;

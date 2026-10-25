@@ -1,24 +1,481 @@
 <!DOCTYPE html>
-<html>
+<html lang = "en">
   <head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1">
+    <title>Eva Weisenfeld | Creative Coding</title>
+    <meta name = "robots" content = "noindex"/>
   <script src="https://cdn.jsdelivr.net/npm/p5@2.3.1/lib/p5.js"></script>    
     <style>
       * {
         box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
+
+        :root{
+          --pureWhite: #ffffff;
+          --offWhite: #f5f8f3;
+          /* --accentBack: #a6d2b5; */
+          --ink: #14231b;
+          --pine: #1f4d36;
+          --leaf: #3f9d6a;
+          /* --accentRear: #cfe6d6; */
+          /* --accentMiddle: #a6d2b5; */
+        }
+
+        /* html, body{
+          width: 100%;
+          min-height: 100vh;
+          margin: 0;
+          padding: 0;
+          overflow-x: hidden;
+          overflow-y: auto;
+        } */
+
+        body{
+          /* font-family: system-ui, -apple-system, sans-serif; */
+          font-family:'Courier New', Courier, monospace;
+          background: radial-gradient(ellipse at 50% 0%, #d8e6d5 0%, #c8d6c5 100%);
+          background-attachment: fixed;
+          background-size: cover;
+          /* color: var(--ink);  */
+          color: #1a2e22;
+          line-height: 1.5;
+          min-height: 100vh;
+        }
+
+        /* #c8d6c5 */
+
+        .watermark-container{
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          pointer-events: none;
+          overflow: hidden;
+          z-index: 1;
+        }
+
+        .body-watermark{
+          position: absolute;
+          opacity: 0.5;
+        }
+
+        header{
+          position: relative;
+          background: linear-gradient(160deg, #1e3d2f, #3b6e4c);
+          color: var(--pureWhite);
+          padding: 4rem 1.5rem 7rem;
+          text-align: center;
+          overflow: hidden;
+          z-index: 2;
+        }
+
+        .header-content{
+          position: relative;
+          z-index: 5;
+        }
+
+        .header-content h1{
+          font-size: 3rem;
+          font-weight: 600;
+          letter-spacing: -0.02em;
+          /* position: relative;
+          z-index: 2; */
+        }
+
+        .header-content p{
+          font-size: 1.1rem;
+          opacity: 0.9;
+          margin-top: 0.4rem;
+          /* position: relative;
+          z-index: 2; */
+        }
+
+        .floating-leaf{
+          position: absolute;
+          opacity: 0.3;
+          animation: floatSway 6s ease-in-out infinite alternate;
+          z-index: 1;
+          pointer-events: none;
+        }
+        .leaf-1 {top: 15%; left: 8%; width: 42px; animation-duration: 7s;}
+        .leaf-2 {top: 30%; right: 10%; width: 36px; animation-duration: 5s; animation-delay: -2s;}
+        .leaf-3 {top: 55%; left: 20%; width: 28px; animation-duration: 8s; animation-delay: -1s;}
+        .leaf-4 {top: 10%; right: 28%; width: 32px; animation-duration: 6.5s; animation-delay: -3.5s;}
+        .leaf-5 {top: 40%; right: 65%; width: 40px; animation-duration: 9s; animation-delay: -4s;}
+
+        @keyframes floatSway{
+          0% {transform: translateY(0px) rotate(0deg);}
+          100% {transform: translateY(-15px) rotate(12deg);}
+        }
+
+        .wave-container{
+          position: absolute;
+          bottom: -1px;
+          left: 0;
+          width: 100%;
+          height: 30%;
+          min-height: 70px;
+          overflow: hidden;
+          line-height: 0;
+          z-index: 2;
+          transform: translateY(1px);
+        }
+
+        .wave{
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 200%;
+          height: 100%;
+          filter: drop-shadow(0px -3px 5px rgba(20, 45, 32, 0.15));
+        }
+
+        .wave svg{
+          width: 100%;
+          height: 100%;
+        }
+
+        .wave-back{
+          fill: rgba(131, 206, 133, 0.65);
+          animation: smoothWave 16s ease-in-out infinite;
+        }
+
+        .wave-mid{
+          fill: rgba(88, 148, 108, 0.85);
+          animation: smoothWave 13s ease-in-out infinite;
+          animation-delay: -5s;
+        }
+
+        .wave-front{
+          fill: #cfddcb;
+          animation: smoothWave 10s ease-in-out infinite;
+          animation-delay: -2s;
+        }
+
+        @keyframes smoothWave{
+          0% {transform: translateX(0);}
+          50% {transform: translateX(-40%);}
+          100% {transform: translateX(0%);}
+        }
+
+        main{
+          position: relative;
+          z-index: 2;
+          max-width: 1100px;
+          margin: 0 auto;
+          padding: 2.5rem 1.5rem 7rem;
+        }
+
+        .section-title{
+          display: flex;
+          align-items: center;
+          gap: 0.6rem;
+          margin-bottom: 2rem;
+          color: var(--pine);
+        }
+
+        .section-title svg{
+          animation: leafPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes leafPulse{
+          0%, 100% {transform: rotate(0deg);}
+          50% {transform: rotate(8deg);}
+        }
+
+        /* .section-title h2{
+          font-size: 1.3rem;
+          font-weight: 600;
+        } */
+
+        .grid{
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+          gap: 1.8rem;
+        }
+
+        .card{
+          background: var(--pureWhite);
+          border-radius: 16px;
+          overflow: hidden;
+          border: 1px solid #cce0cc;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+          /* transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                      box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                      border-color 0.3s ease; */
+          transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+          text-decoration: none;
+          /* color: var(--leaf) */
+          color: inherit;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .card:hover{
+          transform: translateY(-6px) scale(1.01);
+          /* box-shadow: 0 16px 32px rgba(46, 90, 68, 0.15); */
+          border-color: #88b04b;
+          box-shadow: 0 0 22px rgba(136, 176, 75, 0.45), 0 12px 28px rgba(46, 90, 68, 0.15);
+        }
+
+        .preview-container{
+          width: 100%;
+          height: 190px;
+          background: #f2f7f2;
+          position: relative;
+          overflow: hidden;
+          border-bottom: 1 px solid #e0ebe0;
+        }
+
+        .preview-container iframe{
+          width: 200%;
+          height: 200%;
+          border: none;
+          transform: scale(0.5);
+          transform-origin: 0 0;
+          pointer-events: none;
+          transition: transform 0.4s ease;
+        }
+
+        .card:hover .preview-container iframe{
+          transform: scale(0.52);
+        }
+
+        .card-info{
+          padding: 1.25rem;
+        }
+
+        .card-info h3{
+          font-size: 1.05rem;
+          font-weight: 600;
+          color: #1a365d;
+        }
+
+        .card-info span{
+          display: inline-block;
+          font-size: 0.88rem;
+          color: #3b6e4c;
+          margin-top: 0.2rem;
+        }
+
     </style>
-    <meta name="robots" content="noindex">
   </head>
   <body>
-    <h1>Eva Weisenfeld ebw2050</h1>
-    <ul>
-      <li><a href="./week1/index.html">Assignment 1 - Creative Coding is...</a></li>
-      <li><a href="./week1/README.html">Assignment 1 - notes</a></li>
-      <li><a href="./week2/index.html">Assignment 2 - Process Drawing</a></li>
-      <li><a href="./week3/index1.html">Assignment 3 - Iteration Generation 1</a></li>
-      <li><a href="./week3/index2.html">Assignment 3 - Iteration Generation 2</a></li>
-      <li><a href="./week3/index3.html">Assignment 3 - Iteration Generation 3</a></li>
-      <li><a href="./week4/index.html">Assignment 4 - Iteration Generation II</a></li>
-    </ul>
+
+    <div class = "watermark-container" id = "watermarkContainer"></div>
+
+    <script>
+      function generateWatermarks(){
+        const container = document.getElementById('watermarkContainer');
+
+        if(!container) return;
+
+        container.innerHTML = '';
+
+        const watermarkCount = 30;
+
+        const totalHeight = Math.max(document.body.scrollHeight, 
+                                    document.documentElement.scrollHeight, 
+                                    document.body.offsetHeight);
+
+        container.style.height = totalHeight + 'px';
+
+        let lastRotation = 0;
+
+        for(let i = 0; i < watermarkCount; i++){
+          const size = Math.floor(Math.random() * 30 + 120);
+
+          const maxTop = totalHeight - size - 100;
+          const topPos = 80 + (i / (watermarkCount - 1)) * (maxTop - 80);
+
+          const leftPos = (i % 2 === 0) ? Math.random() * 22 + 2 : Math.random() * 22 + 74;
+
+          let rotation;
+          const minAngleDifference = 30;
+          do{
+            rotation = Math.floor(Math.random() * 120 - 60);
+          } while (Math.abs(rotation - lastRotation) < minAngleDifference);
+
+          lastRotation = rotation;
+
+          const leafSVG = `
+            <svg
+              viewBox = "0 0 24 24"
+              fill = "#2e5a44"
+              style = "
+                position: absolute;
+                top: ${topPos}px;
+                left: ${leftPos}%;
+                width: ${size}px;
+                height: ${size}px;
+                transform: rotate(${rotation}deg);
+                opacity: 0.2;
+                pointer-events: none;
+                z-index: 1
+                "
+          >
+            <path d = "M17 8C8 10 5 16 3 21C8 21 14 18 17 13C19 10 19 8 17 8Z"/>
+            </svg>
+        `;
+
+        container.innerHTML += leafSVG;
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', generateWatermarks);
+
+      window.addEventListener('load', generateWatermarks);
+
+      window.addEventListener('resize', generateWatermarks);
+    </script>
+
+    <header>
+      <svg class = "floating-leaf leaf-1" viewBox = "0 0 24 24" fill = "#88b04b">
+        <path d = "M17 8C8 10 5 16 3 21C8 21 14 18 17 13C19 10 19 8 17 8Z"/>
+      </svg>
+      <svg class = "floating-leaf leaf-2" viewBox = "0 0 24 24" fill = "#88b04b">
+        <path d = "M17 8C8 10 5 16 3 21C8 21 14 18 17 14C19 10 19 8 17 8Z"/>
+      </svg>
+      <svg class = "floating-leaf leaf-3" viewBox = "0 0 24 24" fill = "#88b04b">
+        <path d = "M17 8C8 10 5 16 3 21C8 21 14 18 17 14C19 10 19 8 17 8Z"/>
+      </svg>
+      <svg class = "floating-leaf leaf-4" viewBox = "0 0 24 24" fill = "#88b04b">
+        <path d = "M17 8C8 10 5 16 3 21C8 21 14 18 17 14C19 10 19 8 17 8Z"/>
+      </svg>
+      <svg class = "floating-leaf leaf-5" viewBox = "0 0 24 24" fill = "#88b04b">
+        <path d = "M17 8C8 10 5 16 3 21C8 21 14 18 17 14C19 10 19 8 17 8Z"/>
+      </svg>
+
+      <div class = "header-content">
+        <h1>Eva Weisenfeld</h1>
+        <p>ebw2050 - Creative Coding Portfolio</p>
+      </div>
+
+      <div class = "wave-container">
+        <div class = "wave wave-back">
+          <svg viewBox = "0 0 1200 120" preserveAspectRatio = "none">
+            <path d = "M0,30 Q300,-30 600,30 T1200,30 L1200,120 L0,120 Z"></path>
+          </svg>
+      </div>
+      <div class = "wave wave-mid">
+        <svg viewBox = "0 0 1200 120" preserveAspectRatio = "none">
+          <path d = "M0,45 Q300,-10 600,45 T1200,45 L1200,120 L0,120 Z"></path>
+        </svg>
+      </div>
+      <div class = "wave wave-front">
+        <svg viewBox = "0 0 1200 120" preserveAspectRatio = "none">
+          <path d = "M0,75 Q300,20 600,75 T1200,75 L1200,120 L0,120 Z"></path>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+    
+    <main>
+      <div class = "section-title">
+        <svg width = "24" height = "24" viewBox = "0 0 24 24" fill = "none" stroke = "#4a7c59" stroke-width = "2" stroke-linecap = "round" stroke-linejoin = "round">
+          <path d = "M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.4 19 2c1 2 2 4.1 2 9 0 4.4-3.6 8-8 8z"/>
+          <path d = "M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+        </svg>
+        <h2> Assignments & Experiments</h2>
+      </div>
+
+      <div class = "grid">
+
+      <a href = "./week7/index.html" class = "card">
+        <div class = "preview-container">
+          <iframe src = "./week7/index.html"></iframe>
+        </div>
+        <div class = "card-info">
+          <h3>Projection Mapping</h3>
+          <span>Assignment 6</span>
+        </div>
+      </a>
+
+      <a href = "./week5/index.html" class = "card">
+        <div class = "preview-container">
+          <iframe src = "./week5/index.html"></iframe>
+        </div>
+        <div class = "card-info">
+          <h3>Clock</h3>
+          <span>Assignment 5</span>
+        </div>
+      </a>
+
+      <a href = "./week4/index.html" class = "card">
+        <div class = "preview-container">
+          <iframe src = "./week4/index.html"></iframe>
+        </div>
+        <div class = "card-info">
+          <h3>Pen Plotter</h3>
+          <span>Assignment 4</span>
+        </div>
+      </a>
+
+      <a href = "./week3/index3.html" class = "card">
+        <div class = "preview-container">
+          <iframe src = "./week3/index3.html"></iframe>
+        </div>
+        <div class = "card-info">
+          <h3>Iteration Generation 3</h3>
+          <span>Assignment 3</span>
+        </div>
+      </a>
+
+      <a href = "./week3/index2.html" class = "card">
+        <div class = "preview-container">
+          <iframe src = "./week3/index2.html"></iframe>
+        </div>
+        <div class = "card-info">
+          <h3>Iteration Generation 2</h3>
+          <span>Assignment 3</span>
+        </div>
+      </a>
+
+      <a href = "./week3/index1.html" class = "card">
+        <div class = "preview-container">
+          <iframe src = "./week3/index1.html"></iframe>
+        </div>
+        <div class = "card-info">
+          <h3>Iteration Generation 1</h3>
+          <span>Assignment 3</span>
+        </div>
+      </a>
+
+      <a href = "./week2/index.html" class = "card">
+        <div class = "preview-container">
+          <iframe src = "./week2/index.html"></iframe>
+        </div>
+        <div class = "card-info">
+          <h3>Process Drawing</h3>
+          <span>Assignment 2</span>
+        </div>
+      </a>
+
+
+      <a href = "./week1/README.html" class = "card">
+        <div class = "preview-container">
+          <iframe src = "./week1/README.html"></iframe>
+        </div>
+        <div class = "card-info">
+          <h3> Reflection & Process</h3>
+          <span>Assignment 1</span>
+        </div>
+      </a>
+
+        <a href = "./week1/index.html" class = "card">
+          <div class = "preview-container">
+            <iframe src = "./week1/index.html"></iframe>
+          </div>
+          <div class = "card-info">
+            <h3>Creative Coding is...</h3>
+            <span>Assignment 1</span>
+          </div>
+        </a>
+      </div>
+    </main>
   </body>
 </html>
