@@ -16,8 +16,24 @@
         :root{
           --pureWhite: #ffffff;
           --offWhite: #f5f8f3;
-          /* --accentBack: #a6d2b5; */
-          --ink: #14231b;
+          --background-1: #d8e6d5;
+          --background-2: #c8d6c5;
+          --container-background: #f2f7f2;
+          --container--border: #e0ebe0;
+          --dark-accent: #1a3e22;
+          
+          --header-1: #1e3d2f;
+          --header-2: #3b6e4c;
+
+          --drop-shadow: rgba(20, 45, 32, 0.15);
+          --box-shadow-1: rgba(136, 176, 75, 0.45);
+          --box-shadow-2: rgba(46, 90, 68, 0.15);
+          --wave-back: rgba(131, 206, 133, 0.65);
+          --wave-mid: rgba(88, 148, 108, 0.85);
+          --wave-front: #cfddcb;
+
+          --card-border: #cce0cc;
+          --header-border: #88b04b;
           --pine: #1f4d36;
           --leaf: #3f9d6a;
           /* --accentRear: #cfe6d6; */
@@ -36,11 +52,11 @@
         body{
           /* font-family: system-ui, -apple-system, sans-serif; */
           font-family: cursive;
-          background: radial-gradient(ellipse at 50% 0%, #d8e6d5 0%, #c8d6c5 100%);
+          background: radial-gradient(ellipse at 50% 0%, var(--background-1) 0%, var(--background-2) 100%);
           background-attachment: fixed;
           background-size: cover;
           /* color: var(--ink);  */
-          color: #1a2e22;
+          color: var(--dark-accent);
           line-height: 1.5;
           min-height: 100vh;
         }
@@ -64,7 +80,7 @@
 
         header{
           position: relative;
-          background: linear-gradient(160deg, #1e3d2f, #3b6e4c);
+          background: linear-gradient(160deg, var(--header-1), var(--header-2));
           color: var(--pureWhite);
           padding: 4rem 1.5rem 7rem;
           text-align: center;
@@ -130,7 +146,7 @@
           left: 0;
           width: 200%;
           height: 100%;
-          filter: drop-shadow(0px -3px 5px rgba(20, 45, 32, 0.15));
+          filter: drop-shadow(0px -3px 5px var(--drop-shadow));
         }
 
         .wave svg{
@@ -139,18 +155,18 @@
         }
 
         .wave-back{
-          fill: rgba(131, 206, 133, 0.65);
+          fill: var(--wave-back);
           animation: smoothWave 16s ease-in-out infinite;
         }
 
         .wave-mid{
-          fill: rgba(88, 148, 108, 0.85);
+          fill: var(--wave-mid);
           animation: smoothWave 13s ease-in-out infinite;
           animation-delay: -5s;
         }
 
         .wave-front{
-          fill: #cfddcb;
+          fill: var(--wave-front);
           animation: smoothWave 10s ease-in-out infinite;
           animation-delay: -2s;
         }
@@ -201,7 +217,7 @@
           background: var(--pureWhite);
           border-radius: 16px;
           overflow: hidden;
-          border: 1px solid #cce0cc;
+          border: 1px solid var(--card-border);
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
           /* transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), 
                       box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), 
@@ -217,17 +233,17 @@
         .card:hover{
           transform: translateY(-6px) scale(1.01);
           /* box-shadow: 0 16px 32px rgba(46, 90, 68, 0.15); */
-          border-color: #88b04b;
-          box-shadow: 0 0 22px rgba(136, 176, 75, 0.45), 0 12px 28px rgba(46, 90, 68, 0.15);
+          border-color: var(--header-border);
+          box-shadow: 0 0 22px var(--box-shadow-1), 0 12px 28px var(--box-shadow-2);
         }
 
         .preview-container{
           width: 100%;
           height: 190px;
-          background: #f2f7f2;
+          background: var(--container-background);
           position: relative;
           overflow: hidden;
-          border-bottom: 1 px solid #e0ebe0;
+          border-bottom: 1 px solid var(--container-border);
         }
 
         .preview-container iframe{
@@ -251,13 +267,13 @@
         .card-info h3{
           font-size: 1.05rem;
           font-weight: 600;
-          color: #1a365d;
+          color: var(--dark-accent);
         }
 
         .card-info span{
           display: inline-block;
           font-size: 0.88rem;
-          color: #3b6e4c;
+          color: var(--leaf);
           margin-top: 0.2rem;
         }
 
