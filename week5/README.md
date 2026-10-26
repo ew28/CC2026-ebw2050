@@ -1,5 +1,8 @@
 # week5
 
+For me, the hardest part of this assignment was coming up with an idea. I was able to create most of it myself, but worked with the class LLM to figure out the trigonometric functions, then conducted my own experimentation until it looked closer to how I was envisioning it.
+For the index.html page, I worked very closely with the LLM to get everything to look how I wanted. I still want to work on refining it, but I am okay with how it looks for now.
+
 ## Getting Started
 
 Open `index.html` in your web browser and start editing `sketch.js`.
