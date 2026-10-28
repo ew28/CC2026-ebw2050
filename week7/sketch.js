@@ -236,7 +236,7 @@ function sunsetDrawing(sunsetSketch, sunX, sunY) {
 
     let goldCloud = sunsetSketch.color(255, 215, 180);
     let darkCloud = sunsetSketch.color(45, 35, 65);
-    let currentCloud = sunsetSketch.lerpColor(darkCloud, goldCloud, sunsetFactor);
+    let currentCloud = sunsetSketch.lerpColor(goldCloud, darkCloud, sunsetFactor);
 
     for(let x = 0; x < sunsetSketch.width; x += 3){
         for(let y = 0; y < sunsetSketch.height * 0.65; y += 3){
