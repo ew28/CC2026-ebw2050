@@ -1,8 +1,8 @@
 # week6
 
-I had a difficult time choosing where I wanted to project my map. So, I started by created as much of the base code as possible. 
-I then worked with the LLM to refine everything. Since I wound up making a sky-themed scene, I thought it would be cool to project
-onto my ceiling.
+I had a difficult time choosing where I wanted to project my map. So, I started by created as much of the base code as possible.
+I then worked with the LLM to refine everything. Once I had a base from my own code and the LLM, I played with the values until
+I liked the output. Since I wound up making a sky-themed scene, I thought it would be cool to project onto my ceiling.
 
 ## Getting Started
 
