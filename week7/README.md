@@ -1,4 +1,4 @@
-# week6
+# week7
 
 I had a difficult time choosing where I wanted to project my map. So, I started by created as much of the base code as possible.
 I then worked with the LLM to refine everything. Once I had a base from my own code and the LLM, I played with the values until
