@@ -226,7 +226,6 @@ function sunsetDrawing(sunsetSketch, sunX, sunY) {
     let localSunY = sunY - (setQuadHeight + blueQuadHeight);
 
     if(sunY >= (setQuadHeight + blueQuadHeight) - 35 && sunY < (setQuadHeight * 2 + blueQuadHeight) + 35){
-        let localY = sunY - (setQuadHeight + blueQuadHeight);
         drawSun(sunsetSketch, sunX, localSunY, sunSize);
     }
 
