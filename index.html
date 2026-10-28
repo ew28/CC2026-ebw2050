@@ -116,11 +116,11 @@
           z-index: 1;
           pointer-events: none;
         }
-        .leaf-1 {top: 15%; left: 8%; width: 42px; animation-duration: 7s;}
+        /* .leaf-1 {top: 15%; left: 8%; width: 42px; animation-duration: 7s;}
         .leaf-2 {top: 30%; right: 10%; width: 36px; animation-duration: 5s; animation-delay: -2s;}
         .leaf-3 {top: 55%; left: 20%; width: 28px; animation-duration: 8s; animation-delay: -1s;}
         .leaf-4 {top: 10%; right: 28%; width: 32px; animation-duration: 6.5s; animation-delay: -3.5s;}
-        .leaf-5 {top: 40%; right: 65%; width: 40px; animation-duration: 9s; animation-delay: -4s;}
+        .leaf-5 {top: 40%; right: 65%; width: 40px; animation-duration: 9s; animation-delay: -4s;} */
 
         @keyframes floatSway{
           0% {transform: translateY(0px) rotate(0deg);}
@@ -349,7 +349,39 @@
     </script>
 
     <header>
-      <svg class = "floating-leaf leaf-1" viewBox = "0 0 24 24" fill = "#88b04b">
+      <div class = "floating-leaf" id = "floatingLeaf"></div>
+      <script>
+        function generateFloatingLeaves(){
+          const header = document.getElementById('floatingLeaf');
+
+          if(!header) return;
+
+          const leafCount = 10;
+
+          for(let i = 1; i <= leafCount; i++){
+            const leafSVG = `
+              <svg 
+              viewBox = "0 0 24 24" 
+              fill = "#88b04b">
+              style = "
+                position: absolute;
+                opacity: 0.3;
+                animation: floatSway ${Math.random() * 5 + 5}s ease-in-out infinite alternate;
+                top: ${Math.random() * 80 + 10}%;
+                left: ${Math.random() * 80 + 10}%;
+                width: ${Math.random() * 20 + 20}px;
+                z-index: 1;
+                pointer-events: none;
+                "
+              >
+                <path d = "M17 8C8 10 5 16 3 21C8 21 14 18 17 13C19 10 19 8 17 8Z"/>
+              </svg>
+            `;
+            header.innerHTML += leafSVG;
+          }
+        }
+      </script>
+      <!-- <svg class = "floating-leaf leaf-1" viewBox = "0 0 24 24" fill = "#88b04b">
         <path d = "M17 8C8 10 5 16 3 21C8 21 14 18 17 13C19 10 19 8 17 8Z"/>
       </svg>
       <svg class = "floating-leaf leaf-2" viewBox = "0 0 24 24" fill = "#88b04b">
@@ -363,7 +395,7 @@
       </svg>
       <svg class = "floating-leaf leaf-5" viewBox = "0 0 24 24" fill = "#88b04b">
         <path d = "M17 8C8 10 5 16 3 21C8 21 14 18 17 14C19 10 19 8 17 8Z"/>
-      </svg>
+      </svg> -->
 
       <div class = "header-content">
         <h1>Eva Weisenfeld</h1>
