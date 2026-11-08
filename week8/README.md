@@ -1,5 +1,5 @@
 # week8
-
+Inspired by Random International's 2016 piece "Blur Mirror"
 ## Getting Started
 
 Open `index.html` in your web browser and start editing `sketch.js`.
