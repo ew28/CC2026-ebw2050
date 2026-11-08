@@ -93,7 +93,6 @@ function draw() {
                 }
             } else if(shapeSelect === 2) {
                 let hexRad = stepSize / 2;
-
                 let horizSpace = hexRad * 3;
                 let vertSpace = hexRad * (Math.sqrt(3) / 2);
                 let hexRad2 = hexRad - (padding / 2);
