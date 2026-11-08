@@ -1,6 +1,6 @@
 # week8
 Inspired by Random International's 2016 piece "Blur Mirror"
-The course LLM was used to clean up the visuals and for the motion detection mechanics.
+The course LLM was used to clean up the visuals and for the computer vision/motion detection mechanics.
 ## Getting Started
 
 Open `index.html` in your web browser and start editing `sketch.js`.
