@@ -8,7 +8,7 @@ let prevX = null;
 
 let leftThreshold = 15;
 let rightThreshold = 15;
-let delay = 11;
+let delay = 5;
 
 let swipe = false;
 
