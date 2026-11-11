@@ -6,8 +6,8 @@ let smooth = null;
 let start = null;
 let prevX = null;
 
-let leftThreshold = 18;
-let rightThreshold = 18;
+let leftThreshold = 15;
+let rightThreshold = 15;
 let delay = 11;
 
 let swipe = false;
@@ -59,8 +59,8 @@ function draw() {
 
     prevPixels = Array.from(video.pixels);
     
-    let stepSize = floor(map(mouseX, 0, width, 15, 50, true));
-    let padding = map(mouseY, 0, height, 1, 8, true);
+    let stepSize = 25;
+    let padding = 4;
     noStroke();
 
     if(hands.length > 0) {
