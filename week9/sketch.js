@@ -188,9 +188,10 @@ function diamonds(stepSize, padding) {
 
 function hexagons(stepSize, padding) {
     let hexRad = stepSize / 2;
+    let hexPad = padding + 1;
     let horizSpace = hexRad * 3;
     let vertSpace = hexRad * (Math.sqrt(3) / 2);
-    let hexRad2 = hexRad - (padding / 2);
+    let hexRad2 = hexRad - (hexPad / 2);
 
     let numRows = ceil(video.height / vertSpace) + 2;
     let numCols = ceil(video.width / horizSpace) + 2;
