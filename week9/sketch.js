@@ -49,6 +49,8 @@ function averageX(hand) {
 function draw() {
     background(0);
 
+    video.loadPixels();
+
     xOff = (width - video.width) / 2;
     yOff = (height - video.height) / 2;
 
@@ -109,6 +111,8 @@ function draw() {
         prevX = null;
         swipe = false;
     }
+
+    // video.load.pixels();
     
     if(shapeSelect === 0) {
         rectangles(stepSize, padding);
@@ -133,6 +137,8 @@ function isLeft(xDiff) {
 
 function rectangles(stepSize, padding) {
     let size = stepSize - padding;
+
+    // video.loadPixels();
 
     for(let y = 0; y < video.height; y += stepSize){
         for(let x = 0; x < video.width; x += stepSize){
