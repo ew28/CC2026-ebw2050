@@ -1,5 +1,4 @@
 let mainCanvas;
-// let bgCanvas;
 let port;
 let connectButton;
 let sample;
@@ -35,18 +34,6 @@ async function setup() {
 
     bgCanvas = createGraphics(windowWidth, windowHeight);
     document.body.appendChild(bgCanvas.elt);
-
-    // bgCanvas.elt.style.position = 'fixed';
-    // bgCanvas.elt.style.top = '0';
-    // bgCanvas.elt.style.left ='0';
-    // // bgCanvas.elt.style.transform = 'translate(-50%, -50%) scale(1.2';
-    // bgCanvas.elt.style.width = '100vw';
-    // bgCanvas.elt.style.height = '100vh';
-    // bgCanvas.elt.style.zIndex = '1';
-    // bgCanvas.elt.style.filter = 'blur(45px)';
-    // bgCanvas.elt.style.transform = 'scale(1.1)';
-    // // bgCanvas.elt.style.opacity = '0.85';
-    // bgCanvas.elt.style.pointerEvents = 'none';
 
     port = createSerial();
 
@@ -213,13 +200,6 @@ function draw() {
         strokeWeight(map(ring.alpha, 255, 0, 4, 0.5));
         ellipse(0, 0, ring.r, ring.r);
 
-        // bgCanvas.stroke(ringColor);
-        // bgCanvas.strokeWeight(map(ring.alpha, 255, 0, 25, 4));
-        // // let bgRad = map(ring.r, 0, width, 0, bgCanvas.width);
-        // // let windowRingSize = ring.r * 2.5;
-        // let bgDiam = ring.r + 400
-        // bgCanvas.ellipse(0, 0, bgDiam, bgDiam);
-
         if(ring.alpha <= 0) {
             rings.splice(i, 1);
         }
@@ -264,10 +244,6 @@ function draw() {
     textSize(13);
     textFont('sans-serif');
     text("Serial Data: " + (arduinoVals.length > 0 ? arduinoVals.join(" | ") : "STANDBY"), 20, height - 25);
-
-    // if(mainCanvas && mainCanvas.elt && bgCanvas) {
-    //     bgCanvas.drawingContext.drawImage(mainCanvas.elt, 0, 0, bgCanvas.width, bgCanvas.height);
-    // }
 }
 
 function processArduinoVals(arduinoVals) {
