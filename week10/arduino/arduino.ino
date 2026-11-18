@@ -74,5 +74,5 @@ void loop() {
   Serial.print(lever4);
   Serial.println();
 
-  delay(20);
+  delay(50);
 }

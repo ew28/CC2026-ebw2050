@@ -24,7 +24,7 @@ let rings = [];
 
 let basePitch = 1.0;
 let livePitch = 1.0;
-let activeLever;
+let activeLever = -1;
 
 async function setup() {
     mainCanvas = createCanvas(800, 600);
@@ -81,6 +81,13 @@ async function setup() {
     analyzer = new p5.Amplitude();
     if(sample) {
         sample.connect(analyzer);
+
+        sample.onended(() => {
+            if(activeLever >= 0 && arduinoVals[activeLever] === 1) {
+                sample.rate(basePitch * livePitch);
+                sample.play();
+            }
+        });
     }
     // sample.connect(analyzer);
 
@@ -296,7 +303,9 @@ function triggerLever(index, pitch, bgCol, rCol, w) {
 function stopLever(index) {
     if(index === activeLever) {
         activeLever = -1;
-        if(sample) sample.stop();
+        if(sample) {
+            sample.stop();
+        }
     }
 }
 
@@ -309,73 +318,3 @@ function lever2() { triggerLever(2, 1.0, color(12, 45, 32), color(50, 240, 200),
 function lever3() { triggerLever(3, 1.25, color(50, 16, 60), color(0, 255, 255), 0.4); }
 
 function lever4() { triggerLever(4, 1.5, color(45, 10, 35), color(255, 40, 160), 0.5); }
-
-// function keyPressed() {
-//     switch (key) {
-//         case "0":
-//             lever0();
-//             break;
-//         case "1":
-//             lever1();
-//             break;
-//         case "2":
-//             lever2();
-//             break;
-//         case "3":
-//             lever3();
-//             break;
-//         case "4":
-//             lever4();
-//             break;
-//     }
-// }
-
-// function lever0() {
-//     imageIndex = 0;
-//     sample.rate(0.5);
-//     sample.play();
-//     bg = color(255, 99, 71);
-//     currPitchCol = color(255, 99, 71);
-//     imageScale = 1.5;
-//     wiggle = 0.1;
-// }
-
-// function lever1() {
-//     imageIndex = 1;
-//     sample.rate(0.75);
-//     sample.play();
-//     bg = color(255, 165, 0);
-//     currPitchCol = color(255, 165, 0);
-//     imageScale = 1.3;
-//     wiggle = 0.2;
-// }
-
-// function lever2() {
-//     imageIndex = 2;
-//     sample.rate(1.0);
-//     sample.play();
-//     bg = color(60, 179, 113);
-//     currPitchCol = color(60, 179, 113);
-//     imageScale = 1.2;
-//     wiggle = 0.3;
-// }
-
-// function lever3() {
-//     imageIndex = 3;
-//     sample.rate(1.25);
-//     sample.play();
-//     bg = color(30, 144, 255);
-//     currPitchCol = color(30, 144, 255);
-//     imageScale = 1.1;
-//     wiggle = 0.4
-// }
-
-// function lever4() {
-//     imageIndex = 4;
-//     sample.rate(1.5);
-//     sample.play();
-//     bg = color(147, 112, 219);
-//     currPitchCol = color(147, 112, 219);
-//     imageScale = 1;
-//     wiggle = 0.5;
-// }
