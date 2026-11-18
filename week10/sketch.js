@@ -178,7 +178,7 @@ function draw() {
             // if(rawData && rawData.trim().length > 0) {
             //     let parsed = rawData.trim().split(',').map(Number);
 
-            let parsed = line.split(',').map(Number);``
+            let parsed = line.split(',').map(Number);
 
             if(parsed.length === numArduinoVals && !parsed.some(isNaN)){
                 arduinoVals = parsed;
