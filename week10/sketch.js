@@ -21,6 +21,7 @@ let currLever = -1;
 let leverFunctions = [];
 
 let rings = [];
+let currRingCol;
 
 let basePitch = 1.0;
 let livePitch = 1.0;
@@ -136,6 +137,11 @@ function draw() {
 
         let vol = map(mouseY, 0, height, 1.0, 0.1, true);
         sample.amp(vol);
+
+        if(frameCount % 10 === 0) {
+            rings.push({ r:20, alpha: 255, col: currRingCol });
+            // rings.push({ r:50, alpha: 200, col: currRingCol });
+        }
     }
 
     let r = floor(red(bgColor));
@@ -282,6 +288,7 @@ function triggerLever(index, pitch, bgCol, rCol, w) {
     imageIndex = index;
     basePitch = pitch;
     activeLever = index;
+    currRingCol = rCol;
 
     // let pitchBend = map(mouseX, 0, width, 0.5, 2.0, true);
 
@@ -296,8 +303,8 @@ function triggerLever(index, pitch, bgCol, rCol, w) {
     imageScale = 1.25;
     wiggle = w;
 
-    rings.push({r: 50, alpha: 255, col: rCol});
-    rings.push({r: 110, alpha: 200, col: rCol});
+    // rings.push({r: 50, alpha: 255, col: rCol});
+    // rings.push({r: 110, alpha: 200, col: rCol});
 }
 
 function stopLever(index) {
